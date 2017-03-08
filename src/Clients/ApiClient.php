@@ -3,6 +3,7 @@
 namespace Masterpass\CoreSDK\Clients;
 
 use Guzzle\Http\Client;
+use Logger;
 use Masterpass\CoreSDK\Converters\SDKConverterFactory;
 use Masterpass\CoreSDK\Interceptors\MasterCardAPITrackerInterceptor;
 use Masterpass\CoreSDK\Interceptors\MasterCardSDKLoggingInterceptor;

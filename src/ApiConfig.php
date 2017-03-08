@@ -3,24 +3,23 @@
 namespace Masterpass\CoreSDK;
 
 /**
- * Set environment details require to call mastercard api.
- * @package  MasterCardCoreSDK
- *
+ * Class ApiConfig
+ * @package Masterpass\CoreSDK
  */
-class ApiConfig {
-
+class ApiConfig
+{
 	public  $hostUrl;
 	public  $consumerKey;
 	public  $privateKey;
 	public  $envName;
 
-	/**
-	 * Constructs ApiConfig object.
-	 *
-	 * @param hostUrl 			the environment host url. eg : "https://sandbox.api.mastercard.com"
-	 * @param consumerKey		the consumer key (Generated from mastercrad developer zone).
-	 * @param privateKey		the private key, to be fetched from the certificate.
-	 */
+    /**
+     * ApiConfig constructor.
+     * @param $envName
+     * @param $hostUrl
+     * @param $consumerKey
+     * @param $privateKey
+     */
 	public function __construct($envName,$hostUrl,$consumerKey,$privateKey) {
 		$this->envName = $envName;
 		$this->hostUrl = $hostUrl;
@@ -28,73 +27,58 @@ class ApiConfig {
 		$this->privateKey = $privateKey;
 	}
 
-	/**
-	 * Set the environment name.
-	 *
-	 * @param name 		the environment name. e.g - SANDBOX
-	 */
+    /**
+     * @param $envName
+     */
 	public function setEnvName($envName) {
         $this->envName = $envName;
     }
 
-	/**
-	 * Get the environment name.
-	 *
- 	 * @return the environment name.
-	 */
+    /**
+     * @return mixed
+     */
     public function getEnvName(){
         return $this->envName;
     }
 
-	/**
-	 * Set the environment host url.
-	 *
-	 * @param hostUrl	the environment host url. e.g. sandbox - "https://sandbox.api.mastercard.com"
-	 */
+    /**
+     * @param $hostUrl
+     */
 	public function setHostUrl($hostUrl) {
         $this->hostUrl = $hostUrl;
     }
 
-	/**
-	 * Get the environment host url.
-	 *
-	 * @return the environment host url.
-	 */
+    /**
+     * @return mixed
+     */
     public function getHostUrl(){
         return $this->hostUrl;
     }
 
-	 /**
-	 * Set the consumer key generated from mastercrad developer zone.
-	 *
-	 * @param consumerKey	the consumer key (Generated from mastercrad developer zone).
-	 */
+    /**
+     * @param $consumerKey
+     */
 	public function setConsumerKey($consumerKey) {
 		$this->consumerKey = $consumerKey;
 	}
 
-	/**
-	 * Get the consumer key.
-	 *
-	 * @return the consumer key.
-	 */
+    /**
+     * @return mixed
+     */
 	public function getConsumerKey() {
 		return $this->consumerKey;
 	}
 
-	/**
-	 * Set the Private key
-	 * @param privateKey	 the private key, to be fetched from the certificate.
-	 */
+    /**
+     * @param $privateKey
+     */
 	public function setPrivateKey($privateKey) {
 		$this->privateKey = $privateKey;
 	}
 
-	/**
-	 * Get the private key.
-	 *
-	 * @return the private key.
-	 */
+    /**
+     * @return mixed
+     */
 	public function getPrivateKey() {
 		return $this->privateKey;
 	}

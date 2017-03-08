@@ -2,6 +2,8 @@
 
 namespace Masterpass\CoreSDK\Converters;
 
+use Masterpass\CoreSDK\Exceptions\SDKConversionException;
+
 /**
 * To return specific converter object depending on request and response content type.
 * @category Class | SDKConverterFactory
@@ -9,7 +11,8 @@ namespace Masterpass\CoreSDK\Converters;
 * @subpackage  Converters
 */
 
-class SDKConverterFactory {
+class SDKConverterFactory
+{
 	private $xml;
 	private $urlEncoded;
 	private $json;
@@ -28,22 +31,16 @@ class SDKConverterFactory {
 
 	}
 
-	/**
-	 * Return specific converter object depending on request and response content type.
-	 * @param $format | the content type format of request/response.
-	 * @return $object | Specific converter object
-	 * @throws Exception
-	 */
 	public static function getConverter($format)
 	{
 
 		switch($format)
 		{
-			case SDKConverterFactory::XML:
+			case self::XML:
 				return $xml = new XMLConverter();
-			case SDKConverterFactory::URLENCODED:
+			case self::URLENCODED:
 				return $urlEncoded = new EncodedURLConverter();
-			case SDKConverterFactory::JSON:
+			case self::JSON:
 				return $json;
 			default:
 				throw new SDKConversionException("Converter not found for the format ".$format,"Converter not found for $format format");

@@ -2,14 +2,16 @@
 
 namespace Masterpass\CoreSDK\Interceptors;
 
-/**
- * Interceptor for to set SDK tracking information in each request header.
- * @package  MasterCardCoreSDK
- * @subpackage  Interceptor
- *
- */
+use Logger;
+use Masterpass\CoreSDK\baseSdkVersion;
+use Masterpass\CoreSDK\Exceptions\SDKValidationException;
 
-class MasterCardAPITrackerInterceptor {
+/**
+ * Class MasterCardAPITrackerInterceptor
+ * @package Masterpass\CoreSDK\Interceptors
+ */
+class MasterCardAPITrackerInterceptor
+{
 
 	/* @const Base sdk version */
 	const BASE_SDK_VERSION='base_sdk_version=';
@@ -33,26 +35,24 @@ class MasterCardAPITrackerInterceptor {
 
 	private $apiTrackerService;
 
-	/**
-	 * Constructor, sets the implemented api tracker.
-	 *
-	 * @param apiTracker	the implemented APITracker reference.
-	 */
+    /**
+     * MasterCardAPITrackerInterceptor constructor.
+     * @param $tracker
+     */
 	public function __construct($tracker)
 	{
 		$this->apiTrackerService = $tracker;
 		$this->logger = Logger::getLogger(basename(__FILE__));
 	}
 
-	/**
-	 * Adds API tracking and user agent headers & returns to Api Client
-	 * @return api tracking info headers
-	 */
-
+    /**
+     * @return string
+     */
 	public function intercept()
 	{
-		$headers = ''; $trackingHeadrValue = ''; $headertracker = '';
-		$headerVal = ''; $trackingBaseVersion = '';
+		$headers = '';
+//		$trackingHeadrValue = ''; $headertracker = '';
+//		$headerVal = ''; $trackingBaseVersion = '';
 		$headertracker = $this->apiTrackerService;
 
 		if(empty($headertracker))
